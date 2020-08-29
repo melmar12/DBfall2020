@@ -1,3 +1,18 @@
+## UH Server - from Terminal 
+### 1. login with ssh
+`ssh cosc####@code.cs.uh.edu`
+
+once logged in, login to the database and open the sql command prompt
+`psql -d COSC3380` 
+
+to psql type `\q`
+to logout of server type `exit`
+
+### 2. login with sftp
+
+`sftp cosc####@code.cs.uh.edu`
+with a `sftp` connection you can create/delete files, upload files etc.. 
+
 ## Local - Mac OS
 ### 1. install [homebrew](https://brew.sh/)
 
