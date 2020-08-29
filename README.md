@@ -1,5 +1,3 @@
-# DBfall2020
-
 ## Local - Mac OS
 ### 1. install [homebrew](https://brew.sh/)
 
