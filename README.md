@@ -1,10 +1,37 @@
-## Run Test Cases
+### To Run Test Cases
 
-from home directory run: `sh test.sh` 
+cd into home directory and run: `sh test.sh` 
 
 ---------------------------------
+## Run SQL Locally - Mac OS
 
-## UH Server - from Terminal 
+### Install Postgres
+
+**Prerequisites:** macOS or linux and install [homebrew](https://brew.sh/)
+
+to check if homebrew is installed: `brew -v`
+
+1. install postgres with homebrew:
+`brew install postgresql` 
+
+  verify installation: `psql --version`
+
+1. do this (forgot what this does): `ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents`
+
+### Run Postgres
+
+to start your database service: `launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist`
+
+open sql interactive terminal: `psql`
+
+to exit sql interactive terminal: `\q`
+
+to stop your database service: `launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist`
+
+###### source: [Installing Postgres via Brew](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3)
+
+---------------------------------
+## Connect to UH Server from Terminal 
 * ### server connection with ssh
 
 `ssh cosc####@code.cs.uh.edu`
@@ -21,51 +48,25 @@ to logout of the UH server `exit`
 
 with a sftp connection you can create/delete files, upload files etc..
 
-to upload file `put /filepath`
+**commands:**
 
-to upload folder `put -r /folderpath` 
+upload file `put filepath/test.txt`
 
----------------------------------
+upload folder `put -r filepath/folder` 
 
-## Run SQL Locally - Mac OS
-Prerequisite: package manager [homebrew](https://brew.sh/)
 
-to check if installed: `brew -v`
+download file `get filepath/test.txt filepath/destinationFolder`
 
-### Install postgres
-install postgres with homebrew:
-`brew install postgresql` 
-
-verify installation: `psql --version`
-
-do this (forgot what this does): `ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents`
-
-Now, create two new aliases to start and stop your postgres server. They could look something like this:
-
-    alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-    alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"`
-
-run the alias you just created to start your database service: `pg_start`
-
-open sql interactive terminal: `psql`
-
-to exit sql interactive terminal: `\q`
-
-to stop your database service run the alias: `pg_stop`
+download folder `get -r filepath/folder/ filepath/destinationFolder`
 
 ---------------------------------
+## Some Other Helpful Stuff
 
-##### Some helpful stuff:
-
-###### list all the tables: `\dt`
-
-###### run a file: `\i test.sql`
-
+#### psql commands:
 ###### run a file: `psql -f test.sql`
-
 ###### print output into text file: `psql -f test.sql  > out.txt`
+###### source: [how-to-run-an-sql-file-in-postgres](https://kb.objectrocket.com/postgresql/how-to-run-an-sql-file-in-postgres-846#:~:text=not%20already%20exist.-,Run%20a%20SQL%20file%20in%20Postgres%20using%20the%20'psql'%20command,database%20will%20also%20be%20required.)
 
-
-###### [how-to-run-an-sql-file-in-postgres](https://kb.objectrocket.com/postgresql/how-to-run-an-sql-file-in-postgres-846#:~:text=not%20already%20exist.-,Run%20a%20SQL%20file%20in%20Postgres%20using%20the%20'psql'%20command,database%20will%20also%20be%20required.)
-
-###### [Installing Postgres via Brew](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3)
+#### sql interactive terminal:
+###### list all the tables: `\dt`
+###### run a file: `\i test.sql`

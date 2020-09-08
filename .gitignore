@@ -3,3 +3,4 @@ notes.txt
 run.sh
 /tests/output/*.txt
 /tests/sql_log/*.txt
+tests/*.diff
